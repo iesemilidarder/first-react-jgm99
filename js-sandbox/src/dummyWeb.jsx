@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import DummyHeader from './component/DummyHeader';
+import DummyMenu from './component/DummyMenu';
+import Toggle from './component/DummySidebar';
+import DummyArticle from './component/DummyArticle';
+import "../src/dummyWeb.css";
+
 
 const myWebData = [{
     id: 1,
@@ -52,16 +56,19 @@ class MyWebApp extends Component {
         console.log("Seleccionado:" + this.state.currentId);
         console.log(content);
         return <React.Fragment>
-            <DummyHeader data={myWebData}
-                         onclick={this._changeSelection}/>
-            <main className={"row"}>
-                <h1>{content.title}</h1>
-                <p>{content.content}</p>
-            </main>
-            <footer className={"row"}>Hola mundo</footer>
-        </React.Fragment>;
+            <body className="container">
+                <div>
+                    <DummyMenu/>
+                    <Toggle/>
+                </div>
+
+
+                    <DummyArticle/>
+
+
+            </body>
+
+        </React.Fragment>
     }
 }
-
-
 ReactDOM.render(<MyWebApp/>, document.getElementById('app'));
